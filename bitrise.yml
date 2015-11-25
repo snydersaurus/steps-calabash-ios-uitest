@@ -23,12 +23,7 @@ workflows:
           but the step would use the default value specified in the `step.yml`
           file if you would not specify another value.
         inputs:
-        - xamarin_project: $XAMARIN_PROJECT
         - calabash_features: $CALABASH_FEATURES
-        - xamarin_configuration: $BITRISE_XAMARIN_CONFIGURATION
-        - xamarin_platform: $BITRISE_XAMARIN_PLATFORM
-        - xamarin_builder: $BITRISE_XAMARIN_BUILD_TOOL
-        - is_clean_build: yes
         - simulator_device: $SIMULATOR_DEVICE
         - simulator_os_version: $SIMULATOR_OS_VERSION
     - script:

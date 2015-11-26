@@ -4,10 +4,6 @@ require 'timeout'
 require_relative 'utils/logger'
 require_relative 'utils/simulator'
 
-@mdtool = "\"/Applications/Xamarin Studio.app/Contents/MacOS/mdtool\""
-@mono = '/Library/Frameworks/Mono.framework/Versions/Current/bin/mono'
-@nuget = '/Library/Frameworks/Mono.framework/Versions/Current/bin/nuget'
-
 # -----------------------
 # --- functions
 # -----------------------

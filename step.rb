@@ -35,21 +35,17 @@ end
 #
 # Input validation
 options = {
-  project: nil,
   features: nil,
   configuration: nil,
-  platform: nil,
-  builder: nil,
-  clean_build: true,
   device: nil,
   os: nil
 }
 
 parser = OptionParser.new do|opts|
   opts.banner = 'Usage: step.rb [options]'
-  opts.on('-t', '--feautes calabash', 'Calabash features') { |t| options[:features] = t unless t.to_s == '' }
-  opts.on('-d', '--device device', 'Device') { |d| options[:device] = d unless d.to_s == '' }
-  opts.on('-o', '--os os', 'OS') { |o| options[:os] = o unless o.to_s == '' }
+  opts.on('-a', '--feautes calabash', 'Calabash features') { |a| options[:features] = a unless a.to_s == '' }
+  opts.on('-b', '--device device', 'Device') { |b| options[:device] = b unless b.to_s == '' }
+  opts.on('-c', '--os os', 'OS') { |c| options[:os] = c unless c.to_s == '' }
   opts.on('-h', '--help', 'Displays Help') do
     exit
   end

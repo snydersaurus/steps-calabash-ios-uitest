@@ -1,13 +1,13 @@
 #!/bin/bash
 
-THIS_SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+this_script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 set -e
 
 current_path=$(pwd)
-cd $THIS_SCRIPT_DIR
+cd $this_script_dir
 bundle exec ruby "step.rb" \
-	-t "${calabash_features}" \
-	-d "${simulator_device}" \
-	-o "${simulator_os_version}"
+	-a "${calabash_features}" \
+	-b "${simulator_device}" \
+	-c "${simulator_os_version}"
 cd $current_path

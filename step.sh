@@ -12,8 +12,3 @@ bundle exec ruby "step.rb" \
 	-b "${simulator_device}" \
 	-c "${simulator_os_version}"
 cd $current_path
-
-# ruby "$this_script_dir/step.rb" \
-# 	-a "${calabash_features}" \
-# 	-b "${simulator_device}" \
-# 	-c "${simulator_os_version}"

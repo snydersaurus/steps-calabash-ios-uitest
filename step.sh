@@ -6,6 +6,7 @@ set -e
 
 current_path=$(pwd)
 cd $this_script_dir
+bundle install
 bundle exec ruby "step.rb" \
 	-a "${calabash_features}" \
 	-b "${simulator_device}" \

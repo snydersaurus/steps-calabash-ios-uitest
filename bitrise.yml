@@ -18,7 +18,6 @@ workflows:
     - path::./:
         title: Step Test
         inputs:
-        - calabash_features: $CALABASH_FEATURES
         - simulator_device: $SIMULATOR_DEVICE
         - simulator_os_version: $SIMULATOR_OS_VERSION
     - script:

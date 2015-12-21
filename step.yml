@@ -7,7 +7,7 @@ support_url: https://github.com/bitrise-io/steps-calabash-ios-uitest/issues
 host_os_tags:
   - osx-10.10
 project_type_tags:
-  - ios
+  - xamarin
 type_tags:
   - testing
 is_requires_admin_user: true
@@ -16,13 +16,6 @@ is_skippable: false
 dependencies: []
 run_if: ""
 inputs:
-  - calabash_features:
-    opts:
-      title: Path to Calabash features folder
-      description: |
-        Path to Calabash features folder
-      is_required: true
-      is_expand: true
   - simulator_device: iPhone 6
     opts:
       title: Device

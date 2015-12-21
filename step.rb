@@ -12,14 +12,11 @@ def to_bool(value)
   fail_with_message("Invalid value for Boolean: \"#{value}\"")
 end
 
-def run_calabash_test!(feautes)
-  base_directory = File.dirname(feautes)
-  Dir.chdir(base_directory) {
-    puts
-    puts "cucumber #{feautes}"
-    system("cucumber #{feautes}")
-    fail_with_message('cucumber -- failed') unless $?.success?
-  }
+def run_calabash_test!
+  puts
+  puts 'cucumber'
+  system('cucumber')
+  fail_with_message('cucumber -- failed') unless $?.success?
 end
 
 # -----------------------
@@ -29,15 +26,12 @@ end
 #
 # Input validation
 options = {
-  features: nil,
-  configuration: nil,
   device: nil,
   os: nil
 }
 
 parser = OptionParser.new do|opts|
   opts.banner = 'Usage: step.rb [options]'
-  opts.on('-a', '--feautes calabash', 'Calabash features') { |a| options[:features] = a unless a.to_s == '' }
   opts.on('-b', '--device device', 'Device') { |b| options[:device] = b unless b.to_s == '' }
   opts.on('-c', '--os os', 'OS') { |c| options[:os] = c unless c.to_s == '' }
   opts.on('-h', '--help', 'Displays Help') do
@@ -46,7 +40,6 @@ parser = OptionParser.new do|opts|
 end
 parser.parse!
 
-fail_with_message('No features folder found') unless options[:features] && File.exist?(options[:features])
 fail_with_message('simulator_device not specified') unless options[:device]
 fail_with_message('simulator_os_version not specified') unless options[:os]
 
@@ -68,7 +61,7 @@ puts " * simulator_UDID: #{udid}"
 # Run calabash test
 puts
 puts '=> run calabash test'
-run_calabash_test!(options[:features])
+run_calabash_test!
 
 puts
 puts '(i) The result is: succeeded'

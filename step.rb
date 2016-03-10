@@ -12,10 +12,8 @@ def to_bool(value)
   fail_with_message("Invalid value for Boolean: \"#{value}\"")
 end
 
-def run_calabash_test!
-  puts
-  puts 'cucumber'
-  system('cucumber')
+def run_calabash_test!(path)
+  system("cd \"#{path}\" && cucumber")
   fail_with_message('cucumber -- failed') unless $?.success?
 end
 
@@ -32,9 +30,10 @@ options = {
 
 parser = OptionParser.new do|opts|
   opts.banner = 'Usage: step.rb [options]'
-  opts.on('-b', '--device device', 'Device') { |b| options[:device] = b unless b.to_s == '' }
-  opts.on('-c', '--os os', 'OS') { |c| options[:os] = c unless c.to_s == '' }
+  opts.on('-d', '--device device', 'Device') { |d| options[:device] = d unless d.to_s == '' }
+  opts.on('-o', '--os os', 'OS') { |o| options[:os] = c unless o.to_s == '' }
   opts.on('-p', '--project project', 'Path to Xcode project')  { |p| options[:project] = p unless p.to_s == '' }
+  opts.on('-c', '--calabash calabash', 'Path to the calabash directory')  { |c| options[:path] = c unless c.to_s == '' }
   opts.on('-h', '--help', 'Displays Help') do
     exit
   end
@@ -54,6 +53,7 @@ ENV['PROJECT_DIR'] = options[:project] unless options[:project].nil?
 # Print configs
 puts
 puts "\e[34mConfiguration\e[0m"
+puts " * cucumber_path: #{options[:path]}"
 puts " * simulator_device: #{options[:device]}"
 puts " * simulator_os: #{options[:os]}"
 puts " * simulator_UDID: #{udid}"
@@ -63,6 +63,6 @@ puts " * project_path: #{options[:project]}" unless options[:project].nil?
 # Run calabash test
 puts
 puts "\e[34mRunning calabash tests\e[0m"
-run_calabash_test!
+run_calabash_test!(options[:path])
 
 system('envman add --key BITRISE_CALABASH_TEST_RESULT --value succeeded')

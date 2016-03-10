@@ -32,7 +32,7 @@ parser = OptionParser.new do|opts|
   opts.banner = 'Usage: step.rb [options]'
   opts.on('-d', '--device device', 'Device') { |d| options[:device] = d unless d.to_s == '' }
   opts.on('-o', '--os os', 'OS') { |o| options[:os] = o unless o.to_s == '' }
-  opts.on('-p', '--project project', 'Path to Xcode project')  { |p| options[:project] = p unless p.to_s == '' }
+  opts.on('-p', '--project project', 'Path to Xcode project directory')  { |p| options[:project] = p unless p.to_s == '' }
   opts.on('-c', '--calabash calabash', 'Path to the calabash directory')  { |c| options[:path] = c unless c.to_s == '' }
   opts.on('-h', '--help', 'Displays Help') do
     exit
@@ -47,7 +47,13 @@ udid = simulator_udid(options[:device], options[:os])
 fail_with_message('failed to get simulator udid') unless udid
 
 ENV['DEVICE_TARGET'] = udid
-ENV['PROJECT_DIR'] = options[:project] unless options[:project].nil?
+unless options[:project].nil?
+  project_path = options[:project]
+  if project_path.end_with?('.xcworkspace') || project_path.end_with?('.xcodeproj')
+    project_path = File.join(project_path, '..')
+  end
+  ENV['PROJECT_DIR'] = File.absolute_path(project_path)
+end
 
 #
 # Print configs

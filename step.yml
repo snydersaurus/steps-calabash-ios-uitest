@@ -49,9 +49,9 @@ inputs:
       is_expand: true
   - project_path: $BITRISE_PROJECT_PATH
     opts:
-      title: "Xcode project path"
+      title: "Xcode project directory"
       description: |
-        Set your Xcode project path here if cucumber can't detect the Xcode project's location
+        Set your Xcode project directory if cucumber can't detect the Xcode project's location
       is_required: true
       is_expand: true
 outputs:

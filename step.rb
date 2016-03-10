@@ -31,7 +31,7 @@ options = {
 parser = OptionParser.new do|opts|
   opts.banner = 'Usage: step.rb [options]'
   opts.on('-d', '--device device', 'Device') { |d| options[:device] = d unless d.to_s == '' }
-  opts.on('-o', '--os os', 'OS') { |o| options[:os] = c unless o.to_s == '' }
+  opts.on('-o', '--os os', 'OS') { |o| options[:os] = o unless o.to_s == '' }
   opts.on('-p', '--project project', 'Path to Xcode project')  { |p| options[:project] = p unless p.to_s == '' }
   opts.on('-c', '--calabash calabash', 'Path to the calabash directory')  { |c| options[:path] = c unless c.to_s == '' }
   opts.on('-h', '--help', 'Displays Help') do

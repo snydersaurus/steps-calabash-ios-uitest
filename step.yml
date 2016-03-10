@@ -40,8 +40,15 @@ inputs:
         * iOS 9.1
       is_required: false
       is_expand: true
+  - project_path: $BITRISE_PROJECT_PATH
+    opts:
+      title: "Xcode project path"
+      description: |
+        Set your Xcode project path here if cucumber can't detect the Xcode project's location
+      is_required: false
+      is_expand: true
 outputs:
-  - BITRISE_XAMARIN_TEST_RESULT:
+  - BITRISE_CALABASH_TEST_RESULT:
     opts:
       title: Result of the tests. 'succeeded' or 'failed'.
       value_options:

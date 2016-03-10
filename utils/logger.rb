@@ -1,5 +1,5 @@
 def fail_with_message(message)
-  `envman add --key BITRISE_XAMARIN_TEST_RESULT --value failed`
+  `envman add --key BITRISE_CALABASH_TEST_RESULT --value failed`
 
   puts "\e[31m#{message}\e[0m"
   exit(1)

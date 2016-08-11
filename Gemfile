@@ -1,3 +1,3 @@
 source 'https://rubygems.org'
 
-gem "calabash-cucumber", ">= 0.16", "< 2.0"
+gem "calabash-cucumber", ">= 0.19”, "< 2.0"
